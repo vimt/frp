@@ -70,6 +70,9 @@ type ClientCommonConfig struct {
 
 	// Include other config files for proxies.
 	IncludeConfigFiles []string `json:"includes,omitempty"`
+
+	ProxyAllListen    bool     `json:"proxyAllListen,omitempty"`
+	ExcludeListenPort []uint32 `json:"excludeListenPort,omitempty"`
 }
 
 func (c *ClientCommonConfig) Complete() {

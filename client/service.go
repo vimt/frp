@@ -177,6 +177,11 @@ func (svr *Service) Run(ctx context.Context) error {
 			}
 		}()
 	}
+	if svr.common.ProxyAllListen {
+		go func() {
+			svr.runListen()
+		}()
+	}
 
 	// first login to frps
 	svr.loopLoginUntilSuccess(10*time.Second, lo.FromPtr(svr.common.LoginFailExit))
